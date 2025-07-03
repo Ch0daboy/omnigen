@@ -1,0 +1,786 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Setup Project Infrastructure and Repository",
+        "description": "Initialize the project repository with proper folder structure, development environment, and core dependencies for the AI-powered content creation platform",
+        "details": "Create Next.js project with TypeScript configuration, setup Tailwind CSS, configure ESLint and Prettier, create folder structure for components, pages, lib, types, and API routes. Initialize Git repository with appropriate .gitignore. Setup package.json with core dependencies: Next.js, TypeScript, Tailwind, WebSocket libraries, and development tools.",
+        "testStrategy": "Verify project builds successfully, TypeScript compilation works, Tailwind styles apply correctly, and all linting rules pass. Test development server startup and hot reload functionality.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Next.js Project Initialization with TypeScript",
+            "description": "Create a new Next.js project using the `create-next-app` command and select TypeScript as the language.",
+            "dependencies": [],
+            "details": "Run `npx create-next-app my-app --ts` to initialize the project.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Tailwind CSS and Development Tooling Configuration",
+            "description": "Install and configure Tailwind CSS along with other development tools like ESLint.",
+            "dependencies": [
+              1
+            ],
+            "details": "Install Tailwind CSS and other tools using npm or yarn.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Folder Structure and Dependency Installation",
+            "description": "Set up the project folder structure and install necessary dependencies.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Organize the project into components, pages, and styles folders. Install additional dependencies as needed.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Git Repository Initialization and Configuration",
+            "description": "Initialize a Git repository for version control and configure it for remote hosting.",
+            "dependencies": [
+              3
+            ],
+            "details": "Run `git init` to initialize the repository and set up remote tracking.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Configure Backend API Server with Fastify",
+        "description": "Setup Node.js backend server using Fastify framework with PostgreSQL database connection and Redis caching",
+        "details": "Initialize Fastify server with TypeScript support, configure CORS, request validation, and error handling. Setup PostgreSQL connection using pg or Prisma ORM with connection pooling. Configure Redis for caching and session management. Create basic API structure with health check endpoints and authentication middleware placeholder.",
+        "testStrategy": "Test server startup, database connectivity, Redis connection, and basic API endpoints. Verify CORS configuration and request/response handling. Load test with basic concurrent requests.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Fastify Server Initialization with TypeScript",
+            "description": "Set up a Fastify server project using TypeScript, including TypeScript compiler configuration and a basic server with a simple route.",
+            "dependencies": [],
+            "details": "Initialize a new Node.js project, install Fastify and TypeScript dependencies, create a tsconfig.json with appropriate settings (target ES2017 or later, rootDir, outDir), and implement a basic Fastify server in TypeScript with a GET route for '/' that returns a simple response.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "PostgreSQL Database Connection and Configuration",
+            "description": "Integrate PostgreSQL into the Fastify server, including connection setup, schema design, and error handling.",
+            "dependencies": [
+              1
+            ],
+            "details": "Install PostgreSQL client libraries, configure database connection parameters, implement connection pooling, design database schemas with validation, and add error handling for database operations using Fastify's plugin and encapsulation model.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Redis Caching Setup",
+            "description": "Set up Redis caching to improve performance by caching frequently accessed data in the Fastify backend.",
+            "dependencies": [
+              1
+            ],
+            "details": "Install Redis client libraries, configure Redis connection, integrate caching logic into Fastify routes or services, and implement cache invalidation strategies to maintain data consistency.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "CORS and Middleware Configuration",
+            "description": "Configure Cross-Origin Resource Sharing (CORS) and other middleware in the Fastify server to handle security and request processing.",
+            "dependencies": [
+              1
+            ],
+            "details": "Install and configure Fastify CORS plugin with appropriate origin settings, add middleware for logging, request parsing, and error handling, ensuring smooth and secure API interactions.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Basic API Structure and Health Checks",
+            "description": "Design the basic API structure including routes and implement health check endpoints to monitor server status.",
+            "dependencies": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "details": "Organize API routes following clean architecture principles, implement health check endpoints (e.g., /health) that verify server, database, and cache status, and ensure proper response formats and error handling.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Database Schema Design and Migration System",
+        "description": "Design and implement PostgreSQL database schema for Models, Platforms, Operations, and Resources with migration system",
+        "details": "Create database tables for users, models (with JSON fields for dynamic attributes), platforms (with encrypted credential storage), operations (with workflow definitions), and resources (with file metadata). Implement migration system using Prisma or custom SQL migrations. Include indexes for performance and foreign key relationships. Design schema to support dynamic field addition without migrations.",
+        "testStrategy": "Run migrations successfully, verify all tables created with proper constraints, test CRUD operations on each table, validate foreign key relationships, and test dynamic JSON field storage/retrieval.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Core Schema for Users and Models",
+            "description": "Define the main entities for users and models, including their attributes and relationships, ensuring proper normalization and primary key selection.",
+            "dependencies": [],
+            "details": "Analyze requirements for users and models, create entity-relationship diagrams, choose appropriate primary keys, and normalize tables to at least 3NF to reduce redundancy and maintain data integrity.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Create Platforms and Operations Tables",
+            "description": "Design and implement tables for platforms and operations, establishing foreign key relationships to core schema entities.",
+            "dependencies": [
+              1
+            ],
+            "details": "Define attributes for platforms and operations, link them to users or models as needed using foreign keys, and ensure referential integrity while considering performance tradeoffs.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Design Resources Table with File Metadata",
+            "description": "Create a resources table to store file metadata, including dynamic JSON fields for flexible metadata storage.",
+            "dependencies": [
+              1
+            ],
+            "details": "Define columns for file attributes such as name, type, size, and timestamps, and implement a JSON field to handle dynamic or varying metadata, ensuring efficient querying and indexing strategies.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Migration System",
+            "description": "Develop a migration system to manage schema changes and data migrations safely and efficiently.",
+            "dependencies": [
+              1,
+              2,
+              3
+            ],
+            "details": "Set up migration scripts or tools to version control schema changes, handle data transformations, and enable rollback capabilities, following best practices for database migration projects.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Add Indexes and Constraints",
+            "description": "Optimize database performance and integrity by adding appropriate indexes and constraints to all tables.",
+            "dependencies": [
+              1,
+              2,
+              3
+            ],
+            "details": "Create primary keys, unique constraints, foreign keys, and indexes on frequently queried columns, balancing query performance with write operation overhead.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Test Dynamic JSON Field Functionality",
+            "description": "Verify the functionality and performance of the dynamic JSON fields in the resources table.",
+            "dependencies": [
+              3,
+              5
+            ],
+            "details": "Perform tests to ensure JSON fields store and retrieve data correctly, validate query performance on JSON data, and confirm compatibility with indexing strategies.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Authentication and User Management System",
+        "description": "Implement user authentication, session management, and secure credential storage for platform integrations",
+        "details": "Setup JWT-based authentication with refresh tokens, implement user registration/login endpoints, configure session management with Redis. Create secure credential storage system with end-to-end encryption for platform credentials. Implement password hashing with bcrypt, rate limiting for auth endpoints, and session cleanup mechanisms.",
+        "testStrategy": "Test user registration/login flows, verify JWT token generation/validation, test session persistence and cleanup, validate credential encryption/decryption, and test rate limiting and security measures.",
+        "priority": "high",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement JWT Token System",
+            "description": "Design and implement a secure JWT authentication system including token creation, signing, validation, and lifecycle management with access and refresh tokens.",
+            "dependencies": [],
+            "details": "Use strong signing algorithms like RS256, ensure tokens are transmitted over HTTPS, store tokens securely (HttpOnly, Secure cookies), implement token expiration, rotation, and blacklist for revoked tokens, and validate claims such as audience and fingerprinting to prevent misuse and theft.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Develop User Registration and Login Endpoints",
+            "description": "Create REST API endpoints for user registration and login that integrate with the JWT token system for authentication.",
+            "dependencies": [
+              1
+            ],
+            "details": "Endpoints should securely accept user credentials, validate input, create user records with hashed passwords, and issue JWT access and refresh tokens upon successful login. Ensure secure handling of credentials and error responses.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Implement Session Management with Redis",
+            "description": "Set up Redis to manage session state, token blacklisting, and token validation to complement JWT stateless authentication.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Use Redis to store revoked tokens for blacklist checks, manage refresh token validity, and enable session cleanup. Integrate Redis with authentication filters to validate tokens against the blacklist and handle token expiration.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Secure Credential Storage with Encryption",
+            "description": "Implement encryption mechanisms to securely store sensitive user credentials and secrets.",
+            "dependencies": [
+              2
+            ],
+            "details": "Encrypt sensitive data such as private keys or secrets used for signing JWTs and any other confidential user information stored in the database. Use industry-standard encryption algorithms and secure key management practices.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement Password Hashing and Security Measures",
+            "description": "Apply strong password hashing algorithms and additional security measures to protect user passwords.",
+            "dependencies": [
+              2
+            ],
+            "details": "Use adaptive hashing algorithms like bcrypt, Argon2, or PBKDF2 with appropriate salt and cost factors. Enforce password complexity policies, prevent common vulnerabilities, and ensure secure password reset mechanisms.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Add Rate Limiting and Session Cleanup Mechanisms",
+            "description": "Implement rate limiting on authentication endpoints and automated session cleanup to enhance security and resource management.",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Apply rate limiting to prevent brute force attacks on login and registration endpoints. Schedule periodic cleanup of expired sessions and blacklisted tokens in Redis to maintain performance and security.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Core Dashboard UI with Tabbed Navigation",
+        "description": "Create the main dashboard interface with tabbed navigation for Models, Platforms, Operations, and Resources",
+        "details": "Build responsive dashboard layout using Next.js and Tailwind CSS with four main tabs: Models, Platforms, Operations, Resources. Implement tab switching with URL routing, create consistent UI patterns for each section, add loading states and error boundaries. Include header with user profile, notifications, and settings. Design mobile-responsive layout.",
+        "testStrategy": "Test tab navigation and URL routing, verify responsive design on different screen sizes, test loading states and error handling, validate accessibility features, and test user interactions across all tabs.",
+        "priority": "medium",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Main Layout and Implement Responsive Design",
+            "description": "Create the overall dashboard layout ensuring a clean, clear UI that adapts fluidly to different screen sizes and devices. Use grid or flexbox layouts to organize content and ensure key metrics are prominent with balanced white space.",
+            "dependencies": [],
+            "details": "Focus on a single-page layout with scalable components that adjust for desktop and mobile views. Implement responsive patterns such as collapsible sidebars and adjustable content areas to allow users to focus on relevant data. Ensure data visualization elements resize or reorganize gracefully.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Tab Navigation with URL Routing",
+            "description": "Develop a tab navigation system that allows users to switch between different dashboard views or sections, with URL routing to enable direct linking and browser navigation support.",
+            "dependencies": [
+              1
+            ],
+            "details": "Use a routing library or framework features to sync tab state with the URL. Ensure navigation is intuitive and accessible, supporting hierarchical or parallel page structures if needed. Maintain state consistency and support deep linking to specific tabs or views.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Create Header with User Profile and Notifications",
+            "description": "Design and implement a header component that includes user profile access, notifications, and logout functionality, ensuring it is responsive and accessible.",
+            "dependencies": [
+              1
+            ],
+            "details": "Include user avatar, dropdown menu for profile settings and logout, and a notifications icon with badge counts. Provide immediate feedback for user actions and ensure the header adapts well on smaller screens. Keep logout action easily visible within the user menu.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Loading States and Error Boundaries",
+            "description": "Add loading indicators and error handling mechanisms to improve user experience during data fetching or when errors occur.",
+            "dependencies": [
+              1,
+              2,
+              3
+            ],
+            "details": "Show spinners or skeleton loaders while data is loading. Implement error boundaries to catch UI errors gracefully and display user-friendly messages. Handle backend permission errors and sync frontend auth state with backend responses to maintain consistency.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "AI-Powered Model Creation Engine",
+        "description": "Implement the dynamic Model creation system with AI-guided Q&A and content sample generation",
+        "details": "Create Model creation wizard with AI-powered Q&A flow using OpenAI GPT API. Implement dynamic form generation based on content type, AI-driven question refinement, and sample content generation. Store Model templates with flexible JSON schema for attributes. Add approval workflow before saving Models. Include Model editing, duplication, and sharing capabilities.",
+        "testStrategy": "Test AI Q&A flow with various content types, verify sample content generation quality, test Model saving/editing/deletion, validate dynamic form rendering, and test approval workflow functionality.",
+        "priority": "high",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "OpenAI API Integration and Setup",
+            "description": "Create an OpenAI account, generate API keys, install necessary libraries, and establish a secure environment for API calls. Test the API integration with sample requests to ensure connectivity and functionality.",
+            "dependencies": [],
+            "details": "Includes installing OpenAI SDK, configuring environment variables for API keys, and making initial test calls to validate integration.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "AI-Guided Q&A Flow Implementation",
+            "description": "Develop the conversational flow logic that leverages the OpenAI API to guide users through question and answer interactions dynamically.",
+            "dependencies": [
+              1
+            ],
+            "details": "Design prompts and handle API responses to create an interactive Q&A experience, including error handling and user context management.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Dynamic Form Generation System",
+            "description": "Build a system that generates user input forms dynamically based on AI model requirements and user interactions.",
+            "dependencies": [
+              2
+            ],
+            "details": "Use AI outputs and schema definitions to render forms that adapt to different data collection needs during the Q&A flow.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Content Sample Generation Logic",
+            "description": "Implement logic to generate sample content dynamically using AI models, supporting various content types and formats.",
+            "dependencies": [
+              2
+            ],
+            "details": "Leverage OpenAI API calls to produce example outputs that demonstrate model capabilities or assist users in content creation.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Model Template Storage with JSON Schema",
+            "description": "Design and implement a storage system for AI model templates using JSON schema to enforce structure and validation.",
+            "dependencies": [
+              3
+            ],
+            "details": "Define JSON schemas for model templates, store them in a database or file system, and ensure compatibility with dynamic form generation and AI outputs.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Approval Workflow System",
+            "description": "Create a workflow system to manage the approval process for AI-generated content or model templates before final use or publication.",
+            "dependencies": [
+              5
+            ],
+            "details": "Implement user roles, status tracking, notifications, and audit trails to facilitate content/model review and approval.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Model Editing and Sharing Features",
+            "description": "Develop features that allow users to edit AI model templates and share them with others securely and efficiently.",
+            "dependencies": [
+              5,
+              6
+            ],
+            "details": "Include version control, collaborative editing, access permissions, and sharing mechanisms integrated with the storage and approval systems.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Platform Integration with Browser Automation",
+        "description": "Develop Platform connection system using MCP servers and browser automation for platform onboarding",
+        "details": "Implement browser automation using Playwright for platform login simulation, create MCP-compatible hyperbrowser layer, build Platform connection wizard with AI guidance. Develop secure credential capture and storage, implement platform-specific automation scripts, create reusable integration functions. Include sandbox environment for testing platform connections.",
+        "testStrategy": "Test browser automation for major platforms (WordPress, YouTube, etc.), verify credential capture and encryption, test platform connection flows, validate sandbox isolation, and test automation script reliability.",
+        "priority": "high",
+        "dependencies": [
+          6
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Playwright Browser Automation Setup",
+            "description": "Set up Playwright for cross-browser automation including installation, configuration, and establishing best practices for test design and browser context management.",
+            "dependencies": [],
+            "details": "Install Playwright and required browsers, configure test structure using Page Object Model, ensure test independence, and implement asynchronous handling and lifecycle management for browsers and contexts.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "MCP Server Architecture Design",
+            "description": "Design the architecture of the Model Context Protocol (MCP) server to enable AI-powered browser automation using Playwright.",
+            "dependencies": [
+              1
+            ],
+            "details": "Define server components, API endpoints for browser control (launch, navigate, click, type, screenshot, etc.), integration points with AI agents, and scalability considerations.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Platform Connection Wizard with AI Guidance",
+            "description": "Develop an interactive wizard that guides users through connecting various platforms using AI assistance.",
+            "dependencies": [
+              2
+            ],
+            "details": "Implement UI/UX for step-by-step platform connection, integrate AI to provide contextual help and automate configuration steps, and ensure smooth interaction with the MCP server.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Secure Credential Capture System",
+            "description": "Create a secure system to capture, store, and manage user credentials for platform integrations.",
+            "dependencies": [
+              3
+            ],
+            "details": "Implement encryption for credential storage, secure input forms, compliance with security standards, and integration with the platform connection wizard for seamless credential input.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Platform-Specific Automation Scripts",
+            "description": "Develop automation scripts tailored to each target platform to perform required actions via Playwright.",
+            "dependencies": [
+              1,
+              4
+            ],
+            "details": "Write reusable, maintainable scripts using Playwright APIs for navigation, interaction, and data extraction specific to each platform's UI and workflows.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Sandbox Environment Creation",
+            "description": "Set up isolated sandbox environments for safe testing and development of automation scripts and integrations.",
+            "dependencies": [
+              5
+            ],
+            "details": "Provision virtualized or containerized environments that mimic production platforms, enabling safe execution and debugging of automation without impacting live systems.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Integration Testing Framework",
+            "description": "Build a comprehensive testing framework to validate the end-to-end integration of browser automation, MCP server, and platform connections.",
+            "dependencies": [
+              6
+            ],
+            "details": "Design automated tests covering functional, performance, and security aspects, leveraging Playwright's testing capabilities and the MCP server APIs.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Error Handling and Retry Logic",
+            "description": "Implement robust error detection, handling, and retry mechanisms across all components to ensure high reliability.",
+            "dependencies": [
+              7
+            ],
+            "details": "Develop strategies for catching and logging errors, retrying failed operations with backoff, and providing meaningful feedback to users and AI agents.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Operations Workflow Engine",
+        "description": "Build the Operations system for creating, managing, and executing content workflows with scheduling capabilities",
+        "details": "Create Operations builder with drag-and-drop workflow designer, implement scheduling system using RabbitMQ for job queuing, build workflow execution engine with error handling and retry logic. Support one-off and recurring operations, chained tasks, and content repurposing workflows. Include operation monitoring and logging.",
+        "testStrategy": "Test workflow creation and execution, verify scheduling accuracy, test error handling and retry mechanisms, validate operation chaining and dependencies, and test monitoring and logging functionality.",
+        "priority": "medium",
+        "dependencies": [
+          7
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Drag-and-Drop Workflow Designer UI",
+            "description": "Develop an intuitive drag-and-drop user interface for designing workflows, allowing users to visually create and modify workflow schemes.",
+            "dependencies": [],
+            "details": "Use HTML5 and JavaScript frameworks like React or Angular to build the designer. Ensure it supports creating, editing, and saving workflow diagrams with user-friendly controls.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Set Up RabbitMQ Job Queue",
+            "description": "Configure RabbitMQ as the job queue system to manage asynchronous task execution and communication between workflow components.",
+            "dependencies": [],
+            "details": "Install and configure RabbitMQ server, define queues for different job types, and implement producers and consumers to enqueue and process workflow jobs reliably.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop Workflow Execution Engine Core",
+            "description": "Implement the core engine responsible for interpreting workflow definitions, managing execution state, and coordinating task execution order.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "The engine should parse workflow models, interact with the job queue, persist workflow instances, and handle business logic for task transitions and state management.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Scheduling System",
+            "description": "Create a scheduling mechanism to trigger workflows or tasks based on time or event-based triggers.",
+            "dependencies": [
+              3
+            ],
+            "details": "Support cron-like scheduling and event triggers to start or resume workflows. Integrate with the execution engine to manage timed or conditional workflow activations.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Design Error Handling and Retry Mechanisms",
+            "description": "Build robust error handling and retry logic to manage failures during workflow execution and ensure reliability.",
+            "dependencies": [
+              3
+            ],
+            "details": "Implement try-catch-finally patterns, error ignoring options at task level, and configurable retry policies to handle transient and permanent errors gracefully.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Implement Operation Chaining and Dependency Management",
+            "description": "Enable workflows to define dependencies between tasks and support chaining operations to enforce execution order.",
+            "dependencies": [
+              3
+            ],
+            "details": "Develop logic to manage task dependencies, ensuring tasks execute only after their prerequisites complete successfully, supporting complex workflow branching and parallelism.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Develop Monitoring and Logging System",
+            "description": "Create a system to monitor workflow execution status and log events for auditing, debugging, and performance analysis.",
+            "dependencies": [
+              3,
+              5
+            ],
+            "details": "Implement dashboards, logging frameworks, and alerting mechanisms to track workflow progress, errors, retries, and system health in real-time.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Resource Management System",
+        "description": "Implement file storage and management system for reusable assets with version control and organization features",
+        "details": "Build file upload system with drag-and-drop interface, implement file storage using cloud storage (AWS S3 or similar), create file organization with folders and tags, add version control for resources, implement file preview and editing capabilities. Include file sharing and permission management. Support various file types: images, videos, documents, code.",
+        "testStrategy": "Test file upload/download functionality, verify file organization and search, test version control and rollback, validate file preview and editing, and test sharing and permission features.",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design and Implement File Upload System with Drag-and-Drop",
+            "description": "Create a user-friendly file upload interface that supports drag-and-drop functionality for efficient file selection and uploading.",
+            "dependencies": [],
+            "details": "Develop front-end components for drag-and-drop file upload, handle file validation, and implement backend APIs to receive and process uploaded files.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Integrate Cloud Storage with AWS S3",
+            "description": "Connect the file upload system to AWS S3 for scalable and durable cloud storage of uploaded files.",
+            "dependencies": [
+              1
+            ],
+            "details": "Set up AWS S3 buckets, configure access permissions using IAM, implement file transfer to S3 using AWS SDK, and enable features like lifecycle policies and versioning.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Implement File Organization with Folders and Tags",
+            "description": "Develop a system to organize files logically using folders and metadata tags for easy retrieval and management.",
+            "dependencies": [
+              2
+            ],
+            "details": "Design folder hierarchy and tagging schema, enable users to create, rename, and delete folders, assign tags to files, and support search/filter by folder or tag.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Develop Version Control for Files",
+            "description": "Implement version control mechanisms to track changes and maintain file history for uploaded files.",
+            "dependencies": [
+              2
+            ],
+            "details": "Leverage AWS S3 versioning capabilities, design UI to display file versions, enable rollback to previous versions, and manage storage costs related to versioning.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Add File Preview and Sharing Features",
+            "description": "Enable users to preview files directly in the system and share files securely with others.",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Implement file preview for common file types (images, documents, videos), generate secure shareable links with access controls, and track sharing activity.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Real-time Communication and Deployment Setup",
+        "description": "Implement WebSocket communication for real-time updates and prepare production deployment configuration",
+        "details": "Setup WebSocket server for real-time dashboard updates, implement real-time notifications for operation status, create deployment configuration with Docker containers, setup CI/CD pipeline, configure environment variables and secrets management. Include monitoring and logging setup, database backup strategy, and SSL certificate configuration.",
+        "testStrategy": "Test WebSocket connectivity and real-time updates, verify deployment process and container orchestration, test CI/CD pipeline, validate environment configuration, and test monitoring and backup systems.",
+        "priority": "medium",
+        "dependencies": [
+          8,
+          9
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "WebSocket Server Implementation",
+            "description": "Develop and configure a secure, efficient WebSocket server that supports full-duplex communication with clients, including heartbeat mechanisms, error handling, and connection optimization.",
+            "dependencies": [],
+            "details": "Implement secure WebSocket connections (wss://) with SSL/TLS certificates, add heartbeat messages to keep connections alive, handle errors gracefully with automatic reconnection, and optimize connection management to avoid resource waste and support backpressure handling.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Real-time Notification System",
+            "description": "Design and integrate a real-time notification system leveraging the WebSocket server to push timely updates to clients efficiently and reliably.",
+            "dependencies": [
+              1
+            ],
+            "details": "Use the WebSocket server to deliver notifications in real-time, implement message integrity checks, manage message flow with backpressure techniques, and ensure graceful degradation under high load to maintain user experience.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Docker Containerization",
+            "description": "Containerize the WebSocket server and notification system using Docker to ensure consistent deployment environments and ease of scaling.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Create Dockerfiles for the WebSocket server and notification components, configure container networking and volumes, and optimize container images for performance and security.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "CI/CD Pipeline Configuration",
+            "description": "Set up a continuous integration and continuous deployment pipeline to automate building, testing, and deploying the containerized WebSocket and notification services.",
+            "dependencies": [
+              3
+            ],
+            "details": "Configure source code control integration, automate build and test stages, deploy containers to target environments, and implement release and post-release monitoring steps to ensure smooth delivery.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Environment and Secrets Management",
+            "description": "Implement secure management of environment variables and secrets required by the WebSocket server and notification system across different deployment environments.",
+            "dependencies": [
+              3
+            ],
+            "details": "Use secure storage solutions for secrets, configure environment variables for containerized services, isolate environments for development, staging, and production, and ensure secrets are not exposed in logs or version control.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Monitoring and Backup Systems",
+            "description": "Establish monitoring and backup mechanisms to track system health, performance, and ensure data resilience for the WebSocket and notification infrastructure.",
+            "dependencies": [
+              4,
+              5
+            ],
+            "details": "Implement logging, metrics collection, alerting on key performance indicators, use unified logging systems with correlation IDs, and set up regular backups and disaster recovery plans.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-03T02:33:28.766Z",
+      "updated": "2025-07-03T02:33:28.766Z",
+      "description": "Tasks for master context"
+    }
+  }
+}
